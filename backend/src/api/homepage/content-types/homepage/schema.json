@@ -15,13 +15,7 @@
     "seo": {
       "type": "component",
       "repeatable": false,
-      "component": "shared.default-seo"
-    },
-    "hero": {
-      "displayName": "Sections.hero",
-      "type": "component",
-      "repeatable": false,
-      "component": "sections.sections-hero"
+      "component": "shared.undefined"
     }
   }
 }

@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "strategy_questions",
+  "info": {
+    "singularName": "strategy-question",
+    "pluralName": "strategy-questions",
+    "displayName": "Strategy-question",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "question": {
+      "type": "string"
+    },
+    "answer": {
+      "type": "richtext"
+    }
+  }
+}

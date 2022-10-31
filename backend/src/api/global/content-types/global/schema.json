@@ -16,20 +16,24 @@
       "type": "string"
     },
     "defaultSeo": {
-      "displayName": "defaultSeo",
+      "displayName": "undefined",
       "type": "component",
       "repeatable": false,
-      "component": "shared.default-seo"
+      "component": "shared.undefined"
     },
     "favicon": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
+    },
+    "title": {
+      "type": "string"
     }
   }
 }

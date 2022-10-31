@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "question_titles",
+  "info": {
+    "singularName": "question-title",
+    "pluralName": "question-titles",
+    "displayName": "Question-title"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    }
+  }
+}

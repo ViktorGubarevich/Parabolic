@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "leap_questions",
+  "info": {
+    "singularName": "leap-question",
+    "pluralName": "leap-questions",
+    "displayName": "Leap-question",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "question": {
+      "type": "string"
+    },
+    "answer": {
+      "type": "richtext"
+    }
+  }
+}
