@@ -3,7 +3,7 @@ import Footer from "./Footer";
 import { UserProvider } from "../lib/authContext";
 
 const Layout = ({ user, children, categories }) => (
-  <UserProvider value={user}>
+  <UserProvider value={{user}}>
     <Nav categories={categories} />
 
     <main className="bg-[#F1F2F6] grow px-4 pt-20">
