@@ -16,7 +16,7 @@ const Login = () => {
 
     try {
       const responseData = await fetcher(
-        `${process.env.NEXT_PUBLIC_STRAPI_URL}/auth/local`,
+        `${process.env.NEXT_PUBLIC_STRAPI_URL_API}/auth/local`,
         {
           method: "POST",
           headers: {

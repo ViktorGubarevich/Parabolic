@@ -4,7 +4,7 @@ import { unsetToken } from "../lib/auth";
 
 const Nav = ({ categories }) => {
   const router = useRouter();
-  
+
   const logout = () => {
     unsetToken();
     router.push("/");
@@ -76,7 +76,7 @@ const Nav = ({ categories }) => {
             <Link href="/faq" className="p-3 block hover:bg-[#ffb80b]">
               Faq
             </Link>
-          </li>          
+          </li>
         </ul>
         <a
           className="ml-2.5 py-1.5 px-5 block text-white font-semibold hover:text-[#212b38] bg-[#00ae42] rounded-full hover:bg-[#50ce50] cursor-pointer"

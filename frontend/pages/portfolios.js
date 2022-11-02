@@ -13,8 +13,8 @@ const Portfolios = ({ categories, portfolio }) => {
   return (
     <Layout categories={categories}>
       <Seo seo={seo} />
-      <div className="w-[1200px] px-4 flex flex-col font-light">
-        <div className="flex flex-col justify-center justify-items-center content-center items-center">
+      <div className="flex flex-col px-4 py-16 font-light">
+        <div className="flex flex-col items-center">
           <div className="text-4xl font-thin mb-5 uppercase tracking-widest text-center">
             {portfolio.attributes.title}
           </div>
@@ -22,7 +22,13 @@ const Portfolios = ({ categories, portfolio }) => {
             id="link"
             className="flex uppercase tracking-wider text-center pb-4"
           >
-            <ReactMarkdown>{portfolio.attributes.subtitle}</ReactMarkdown>
+            <ReactMarkdown
+              transformImageUri={(uri) =>
+                process.env.NEXT_PUBLIC_STRAPI_URL + uri
+              }
+            >
+              {portfolio.attributes.subtitle}
+            </ReactMarkdown>
           </div>
           <NextImage image={portfolio.attributes.image} />
         </div>
@@ -32,13 +38,13 @@ const Portfolios = ({ categories, portfolio }) => {
 };
 
 export async function getStaticProps() {
-  const [categoriesRes, portfolioRes] = await Promise.all([    
+  const [categoriesRes, portfolioRes] = await Promise.all([
     fetchAPI("/categories", { populate: "*" }),
     fetchAPI("/portfolio", { populate: "*" }),
-  ]);  
+  ]);
 
   return {
-    props: {      
+    props: {
       categories: categoriesRes.data,
       portfolio: portfolioRes.data,
     },

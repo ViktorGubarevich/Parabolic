@@ -33,7 +33,7 @@ export const unsetToken = () => {
 export const getUserFromLocalCookie = () => {
   const jwt = getTokenFromLocalCookie();
   if (jwt) {
-    return fetcher(`${process.env.NEXT_PUBLIC_STRAPI_URL}/users/me`, {
+    return fetcher(`${process.env.NEXT_PUBLIC_STRAPI_URL_API}/users/me`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${jwt}`,

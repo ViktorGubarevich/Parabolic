@@ -13,22 +13,20 @@ const MasterClass = ({ categories, masterclass }) => {
   return (
     <Layout categories={categories}>
       <Seo seo={seo} />
-      <div className="min-w-[1140px] px-4 flex flex-col font-light">
-        <div className="flex flex-col">
-          <div className="text-4xl font-thin mb-5 uppercase tracking-widest">
-            {masterclass.attributes.title}
-          </div>          
-          <Link
-            href={`${getStrapiMedia(masterclass.attributes.video)}`}
-            className="text-[#17bcb8] hover:text-[#007be0]"
-          >
-            <NextImage image={masterclass.attributes.image} />
-          </Link>
-          {/* <iframe
+      <div className="flex flex-col max-w-[1140px] m-auto px-4 py-16">
+        <div className="text-4xl font-thin mb-5 uppercase tracking-widest">
+          {masterclass.attributes.title}
+        </div>
+        <Link
+          href={`${getStrapiMedia(masterclass.attributes.video)}`}
+          className="text-[#17bcb8] hover:text-[#007be0]"
+        >
+          <NextImage image={masterclass.attributes.image} />
+        </Link>
+        {/* <iframe
             className="w-full h-[623px] outline-none"
             src="//fast.wistia.net/embed/iframe/72wly3lnl2?videoFoam=true"
           ></iframe> */}
-        </div>
       </div>
     </Layout>
   );

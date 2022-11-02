@@ -1,9 +1,9 @@
-import qs from "qs"
+import qs from "qs";
 
 export function getStrapiURL(path = "") {
   return `${
     process.env.NEXT_PUBLIC_STRAPI_API_URL || "http://localhost:1337"
-  }${path}`
+  }${path}`;
 }
 
 export async function fetchAPI(path, urlParamsObject = {}, options = {}) {
@@ -13,24 +13,24 @@ export async function fetchAPI(path, urlParamsObject = {}, options = {}) {
       "Content-Type": "application/json",
     },
     ...options,
-  }
+  };
 
   // Build request URL
-  const queryString = qs.stringify(urlParamsObject)
+  const queryString = qs.stringify(urlParamsObject);
   const requestUrl = `${getStrapiURL(
     `/api${path}${queryString ? `?${queryString}` : ""}`
-  )}`
+  )}`;
 
   // Trigger API call
-  const response = await fetch(requestUrl, mergedOptions)
+  const response = await fetch(requestUrl, mergedOptions);
 
   // Handle response
   if (!response.ok) {
-    console.error(response.statusText)
-    throw new Error(`An error occured please try again`)
+    console.error(response.statusText);
+    throw new Error(`An error occured please try again`);
   }
-  const data = await response.json()
-  return data
+  const data = await response.json();
+  return data;
 }
 
 //Auth response

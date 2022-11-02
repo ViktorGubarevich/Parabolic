@@ -17,7 +17,7 @@ const MikeBurnick = ({
   return (
     <Layout categories={categories}>
       <Seo seo={seo} />
-      <div className="min-w-[1140px] px-4 flex flex-col font-light">
+      <div className="flex flex-col max-w-[1140px] m-auto px-4 py-16 font-light">
         <div className="flex">
           <Link
             href="/about"
@@ -34,7 +34,13 @@ const MikeBurnick = ({
         </div>
         <div className="flex">
           <div id="margin" className="text-base leading-5 pr-10">
-            <ReactMarkdown>{aboutMikeBurnick.attributes.context}</ReactMarkdown>
+            <ReactMarkdown
+              transformImageUri={(uri) =>
+                process.env.NEXT_PUBLIC_STRAPI_URL + uri
+              }
+            >
+              {aboutMikeBurnick.attributes.context}
+            </ReactMarkdown>
           </div>
           <div className="min-w-[400px]">
             <NextImage image={aboutMikeBurnick.attributes.image} />

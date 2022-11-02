@@ -6,9 +6,9 @@ const Layout = ({ user, children, categories }) => (
   <UserProvider value={{user}}>
     <Nav categories={categories} />
 
-    <main className="bg-[#F1F2F6] grow px-4 pt-20">
-      <div className="flex justify-center w-[825px] mx-auto py-16">
-        <div>{children}</div>
+    <main className="bg-[#F1F2F6] grow pt-20">
+      <div className="flex justify-center mx-auto">
+        <div className="w-full">{children}</div>
       </div>
     </main>
 

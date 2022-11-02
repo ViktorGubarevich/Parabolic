@@ -1,5 +1,6 @@
 import Layout from "../components/Layout";
 import Articles from "../components/Articles";
+import Search from "../components/Search";
 import { fetchAPI } from "../lib/api";
 import Seo from "../components/Seo";
 import { useFetchUser } from "../lib/authContext";
@@ -13,7 +14,12 @@ export default function Home({ articles, categories, homepage }) {
       {user ? (
         <Layout user={user} categories={categories}>
           <Seo seo={homepage.attributes.seo} />
-          <Articles articles={articles} />
+          <div className="flex justify-center m-auto max-w-[1100px] text-4xl mb-3 py-16">
+            <Articles articles={articles} />
+            <div className="px-4">
+              <Search />
+            </div>
+          </div>
         </Layout>
       ) : (
         <Login />

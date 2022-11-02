@@ -18,7 +18,7 @@ const Faq = ({
   return (
     <Layout categories={categories}>
       <Seo seo={seo} />
-      <div className="min-w-[1140px] px-4 flex flex-col font-light">
+      <div className="max-w-[1140px] m-auto px-4 py-16 flex flex-col font-light">
         <div className="text-4xl font-thin mb-5 uppercase tracking-widest">
           {faq.attributes.title}
         </div>

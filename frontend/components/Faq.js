@@ -7,7 +7,7 @@ const Questions = ({ questions }) => {
         {questions &&
           questions.map((question) => {
             return (
-              <li key={question.id}>                
+              <li key={question.id}>
                 <div className="flex flex-col last:mb-0 font-serif">
                   <div className="flex mb-4 text-base">
                     <p className="pr-1 font-semibold">Q:</p>
@@ -17,7 +17,13 @@ const Questions = ({ questions }) => {
                     id="margin"
                     className="mb-8 text-base font-normal leading-5"
                   >
-                    <ReactMarkdown>{question.attributes.answer}</ReactMarkdown>
+                    <ReactMarkdown
+                      transformImageUri={(uri) =>
+                        process.env.NEXT_PUBLIC_STRAPI_URL + uri
+                      }
+                    >
+                      {question.attributes.answer}
+                    </ReactMarkdown>
                   </div>
                 </div>
               </li>

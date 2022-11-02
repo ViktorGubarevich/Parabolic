@@ -5,8 +5,8 @@ import { toLocaleDate } from "../utils/dateTime";
 
 const Card = ({ article }) => {
   return (
-    <div className="flex flex-col max-w-[823px] bg-white rounded-lg p-5 mb-5 last:mb-0">
-      <div className="mb-5 uppercase font-thin tracking-widest hover:underline hover:decoration-[#0056b3]">
+    <div className="flex flex-col max-w-[855px] bg-white rounded-lg p-5 mb-5 last:mb-0 xl:w-[1140px] lg:w-[960px] md:w-[720px] sm:w-[540px]">
+      <div className="text-4xl mb-5 uppercase font-thin tracking-widest hover:underline hover:decoration-[#0056b3]">
         <Link href={`/article/${article.attributes.slug}`}>
           {article.attributes.title}
         </Link>
@@ -22,7 +22,11 @@ const Card = ({ article }) => {
         </p>
       </div>
       <div className="mb-4 text-lg font-['Open-Sans'] leading-5 text-ellipsis overflow-hidden h-20">
-        <ReactMarkdown>{article.attributes.content}</ReactMarkdown>
+        <ReactMarkdown
+          transformImageUri={(uri) => process.env.NEXT_PUBLIC_STRAPI_URL + uri}
+        >
+          {article.attributes.content}
+        </ReactMarkdown>
       </div>
       <Link
         href={`/article/${article.attributes.slug}`}
