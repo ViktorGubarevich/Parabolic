@@ -17,8 +17,8 @@ const News = ({ articles, categories }) => {
 
   return (
     <Layout user={user} categories={categories}>
-      <div className="flex justify-center m-auto mb-3 py-16">
-        <div className="flex flex-col">
+      <div className="flex justify-center m-auto mb-3 py-16 max-w-[1100px]">
+        <div className="flex flex-col px-4">
           <div className="flex text-4xl font-thin mb-5 uppercase tracking-widest">
             <div>Search Results for:</div>
             <div className="font-medium">{router.query.term}</div>
