@@ -2,7 +2,7 @@ import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import Layout from "../components/Layout";
 import Seo from "../components/Seo";
-import { fetchAPI } from "../lib/api";
+import { fetchAPI, getStrapiURL } from "../lib/api";
 
 const About = ({ categories, aboutParabolicProfits, aboutMikeBurnick }) => {
   const seo = {
@@ -28,11 +28,7 @@ const About = ({ categories, aboutParabolicProfits, aboutMikeBurnick }) => {
           </Link>
         </div>
         <div id="margin" className="text-base leading-5">
-          <ReactMarkdown
-            transformImageUri={(uri) =>
-              process.env.NEXT_PUBLIC_STRAPI_URL + uri
-            }
-          >
+          <ReactMarkdown transformImageUri={(uri) => getStrapiURL(uri)}>
             {aboutParabolicProfits.attributes.context}
           </ReactMarkdown>
         </div>

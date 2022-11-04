@@ -1,6 +1,6 @@
 import ReactMarkdown from "react-markdown";
 import Layout from "../components/Layout";
-import { fetchAPI, fetcher } from "../lib/api";
+import { fetchAPI, getStrapiURL } from "../lib/api";
 import NextImage from "../components/Image";
 import Seo from "../components/Seo";
 
@@ -22,11 +22,7 @@ const Portfolios = ({ categories, portfolio }) => {
             id="link"
             className="flex uppercase tracking-wider text-center pb-4"
           >
-            <ReactMarkdown
-              transformImageUri={(uri) =>
-                process.env.NEXT_PUBLIC_STRAPI_URL + uri
-              }
-            >
+            <ReactMarkdown transformImageUri={(uri) => getStrapiURL(uri)}>
               {portfolio.attributes.subtitle}
             </ReactMarkdown>
           </div>
