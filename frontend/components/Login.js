@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/router";
-import { fetcher } from "../lib/api";
+import { fetchAPI } from "../lib/api";
 import { setToken } from "../lib/auth";
 
 const Login = () => {
@@ -15,8 +15,9 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const responseData = await fetcher(
-        `${process.env.NEXT_PUBLIC_STRAPI_URL_API}/auth/local`,
+      const responseData = await fetchAPI(
+        "/auth/local",
+        { populate: "*" },
         {
           method: "POST",
           headers: {
@@ -28,6 +29,8 @@ const Login = () => {
           }),
         }
       );
+      console.log(responseData);
+
       setToken(responseData);
       router.reload("/");
     } catch (error) {

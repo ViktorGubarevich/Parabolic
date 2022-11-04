@@ -1,6 +1,6 @@
 import Card from "../components/Card";
 import Layout from "../components/Layout";
-import { fetcher } from "../lib/api";
+import { fetchAPI } from "../lib/api";
 import { useFetchUser } from "../lib/authContext";
 import qs from "qs";
 import { useRouter } from "next/router";
@@ -70,18 +70,15 @@ export async function getServerSideProps({ query: { term } }) {
     },
   });
 
-  const articlesResponse = await fetcher(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL_API}/articles?${query}`
-  );
-
-  const categoriesResponse = await fetcher(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL_API}/categories`
-  );
+  const [articlesRes, categoriesRes] = await Promise.all([
+    fetchAPI(`/articles?${query}`, { populate: "*" }),
+    fetchAPI("/categories", { populate: "*" }),
+  ]);
 
   return {
     props: {
-      articles: articlesResponse.data,
-      categories: categoriesResponse.data,
+      articles: articlesRes.data,
+      categories: categoriesRes.data,
     },
   };
 }
