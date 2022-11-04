@@ -1,5 +1,6 @@
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
+import { getStrapiURL } from "../lib/api";
 import { toLocaleDate } from "../utils/dateTime";
 
 const RelatedArticles = ({ articles }) => {
@@ -28,9 +29,7 @@ const RelatedArticles = ({ articles }) => {
                   </div>
                   <div className="mb-4 text-lg font-['Open-Sans'] leading-5 text-ellipsis overflow-hidden h-20">
                     <ReactMarkdown
-                      transformImageUri={(uri) =>
-                        process.env.NEXT_PUBLIC_STRAPI_URL + uri
-                      }
+                      transformImageUri={(uri) => getStrapiURL(uri)}
                     >
                       {article.attributes.content}
                     </ReactMarkdown>

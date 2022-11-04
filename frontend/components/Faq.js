@@ -1,4 +1,5 @@
 import ReactMarkdown from "react-markdown";
+import { getStrapiURL } from "../lib/api";
 
 const Questions = ({ questions }) => {
   return (
@@ -18,9 +19,7 @@ const Questions = ({ questions }) => {
                     className="mb-8 text-base font-normal leading-5"
                   >
                     <ReactMarkdown
-                      transformImageUri={(uri) =>
-                        process.env.NEXT_PUBLIC_STRAPI_URL + uri
-                      }
+                      transformImageUri={(uri) => getStrapiURL(uri)}
                     >
                       {question.attributes.answer}
                     </ReactMarkdown>
