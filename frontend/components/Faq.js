@@ -1,4 +1,5 @@
 import ReactMarkdown from "react-markdown";
+import { getStrapiURL } from "../lib/api";
 
 const Questions = ({ questions }) => {
   return (
