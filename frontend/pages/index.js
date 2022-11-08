@@ -14,9 +14,9 @@ export default function Home({ articles, categories, homepage }) {
       {user ? (
         <Layout user={user} categories={categories}>
           <Seo seo={homepage.attributes.seo} />
-          <div className="flex justify-center m-auto max-w-[1100px] text-4xl mb-3 py-16">
+          <div className="flex justify-center m-auto max-w-[1100px] text-4xl mb-3 py-16 max-lg:flex-col">
             <Articles articles={articles} />
-            <div className="px-4">
+            <div className="px-4 max-lg:pt-4">
               <Search />
             </div>
           </div>
