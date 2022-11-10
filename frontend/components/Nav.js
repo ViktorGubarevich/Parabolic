@@ -1,15 +1,12 @@
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { useState } from "react";
 import { unsetToken } from "../lib/auth";
 
 const Nav = ({ categories }) => {
-  const router = useRouter();
   const [isNavOpen, setIsNavOpen] = useState(false);
 
   const logout = () => {
     unsetToken();
-    router.push("/");
   };
 
   return (
@@ -56,17 +53,18 @@ const Nav = ({ categories }) => {
             </div>
             <ul className="pt-4 text-sm uppercase text-gray-700 mb-0 xl:flex xl:justify-between xl:pt-0">
               {categories &&
-                categories.map((category) => {
-                  return (
-                    <li key={category.id}>
-                      <Link
-                        href={`/category/${category.attributes.slug}`}
-                        className="p-3 block hover:bg-[#ffb80b]"
-                      >
-                        {category.attributes.name}
-                      </Link>
-                    </li>
-                  );
+                categories.map((category, index) => {
+                  if (index <= 1)
+                    return (
+                      <li key={category.id}>
+                        <Link
+                          href={`/category/${category.attributes.slug}`}
+                          className="p-3 block hover:bg-[#ffb80b]"
+                        >
+                          {category.attributes.name}
+                        </Link>
+                      </li>
+                    );
                 })}
               <li>
                 <Link
@@ -74,6 +72,14 @@ const Nav = ({ categories }) => {
                   className="p-3 block hover:bg-[#ffb80b]"
                 >
                   Portfolio
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/category/${categories[2].attributes.slug}`}
+                  className="p-3 block hover:bg-[#ffb80b]"
+                >
+                  {categories[2].attributes.name}
                 </Link>
               </li>
               <li>
@@ -95,7 +101,7 @@ const Nav = ({ categories }) => {
                 </Link>
               </li>
               <button
-                className="ml-2.5 py-2.5 px-5 block text-white font-semibold hover:text-[#212b38] bg-[#00ae42] rounded-full hover:bg-[#50ce50] cursor-pointer"
+                className="font-['Open-Sans'] ml-2.5 py-2.5 px-5 block text-white font-semibold hover:text-[#212b38] bg-[#00ae42] rounded-full hover:bg-[#50ce50] cursor-pointer"
                 onClick={logout}
               >
                 LOGOUT
@@ -103,23 +109,32 @@ const Nav = ({ categories }) => {
             </ul>
           </div>
         </section>
-        <ul className="hidden pt-4 text-sm uppercase text-gray-700 mb-0 xl:justify-between xl:flex xl:pt-0">
+        <ul className="font-['Helvetica'] hidden pt-4 text-xs uppercase text-gray-700 mb-0 xl:justify-between xl:flex xl:pt-0">
           {categories &&
-            categories.map((category) => {
-              return (
-                <li key={category.id}>
-                  <Link
-                    href={`/category/${category.attributes.slug}`}
-                    className="p-3 block hover:bg-[#ffb80b]"
-                  >
-                    {category.attributes.name}
-                  </Link>
-                </li>
-              );
+            categories.map((category, index) => {
+              if (index <= 1)
+                return (
+                  <li key={category.id}>
+                    <Link
+                      href={`/category/${category.attributes.slug}`}
+                      className="p-3 block hover:bg-[#ffb80b]"
+                    >
+                      {category.attributes.name}
+                    </Link>
+                  </li>
+                );
             })}
           <li>
             <Link href="/portfolios" className="p-3 block hover:bg-[#ffb80b]">
               Portfolio
+            </Link>
+          </li>
+          <li>
+            <Link
+              href={`/category/${categories[2].attributes.slug}`}
+              className="p-3 block hover:bg-[#ffb80b]"
+            >
+              {categories[2].attributes.name}
             </Link>
           </li>
           <li>
@@ -138,7 +153,7 @@ const Nav = ({ categories }) => {
             </Link>
           </li>
           <button
-            className="ml-2.5 py-2.5 px-5 block text-white font-semibold hover:text-[#212b38] bg-[#00ae42] rounded-full hover:bg-[#50ce50] cursor-pointer"
+            className="font-['Open-Sans'] ml-2.5 py-2.5 px-5 block text-white font-semibold hover:text-[#212b38] bg-[#00ae42] rounded-full hover:bg-[#50ce50] cursor-pointer"
             onClick={logout}
           >
             LOGOUT
