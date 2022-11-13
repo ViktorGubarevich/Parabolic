@@ -46,22 +46,7 @@
       ]
     },
     "audio": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "audios"
-      ]
-    },
-    "secondAudio": {
       "type": "string"
-    },
-    "image": {
-      "allowedTypes": [
-        "images"
-      ],
-      "type": "media",
-      "multiple": false
     }
   }
 }
