@@ -4,7 +4,8 @@
   "info": {
     "singularName": "portfolio",
     "pluralName": "portfolios",
-    "displayName": "Portfolio"
+    "displayName": "Portfolio",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -16,16 +17,6 @@
     },
     "subtitle": {
       "type": "richtext"
-    },
-    "image": {
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "type": "media",
-      "multiple": false
     }
   }
 }
