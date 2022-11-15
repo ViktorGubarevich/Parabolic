@@ -1,11 +1,17 @@
 import Card from "./Card";
 
 const Articles = ({ articles }) => {
+  const newArticles = [...articles];
+
+  const sortArticles = newArticles.sort((a, b) => {
+    return a.id - b.id;
+  });
+
   return (
     <>
       <div className="flex flex-col px-4">
-        {articles &&
-          articles.map((article) => {
+        {sortArticles &&
+          sortArticles.map((article) => {
             return (
               <Card
                 article={article}
