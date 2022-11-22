@@ -1,11 +1,9 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { getUserFromLocalCookie } from "./auth";
 
 let userState;
 
 const User = createContext({ user: null });
-
-export const useUser = () => useContext(User);
 
 export const UserProvider = ({ value, children }) => {
   const { user } = value;
@@ -24,25 +22,25 @@ export const useFetchUser = () => {
     user: userState || null,
   });
 
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     if (userState !== undefined) {
       return;
     }
 
     let isMounted = true;
+
     const resolveUser = async () => {
       const user = await getUserFromLocalCookie();
 
       if (isMounted) {
         setUser({ user });
       }
+      setLoading(false);
     };
     resolveUser();
-
-    return () => {
-      isMounted = false;
-    };
   }, []);
 
-  return data;
+  return { ...data, loading };
 };
