@@ -23,7 +23,7 @@ const MasterClass = ({ categories, masterclass }) => {
   );
 };
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const [categoriesRes, masterclassRes] = await Promise.all([
     fetchAPI("/categories", { populate: "*" }),
     fetchAPI("/masterclass", { populate: "*" }),
@@ -34,7 +34,6 @@ export async function getStaticProps() {
       categories: categoriesRes.data,
       masterclass: masterclassRes.data,
     },
-    revalidate: 1,
   };
 }
 
