@@ -37,15 +37,13 @@ const Article = ({ articles, article, categories }) => {
             {toLocaleDate(article.attributes.published)} |{" "}
             {article.attributes.tab}
           </div>
-          {article.attributes.audio !== null ? (
+          {article.attributes.audio !== null && (
             <>
               <div className="font-['Helvetica']">Listen to this post</div>
               <audio controls className="w-full">
                 <source type="audio/mpeg" src={article.attributes.audio} />
               </audio>
             </>
-          ) : (
-            ""
           )}
           <div
             id="margin"
@@ -55,7 +53,7 @@ const Article = ({ articles, article, categories }) => {
               {article.attributes.content}
             </ReactMarkdown>
           </div>
-          {article.attributes.pdf.data !== null ? (
+          {article.attributes.pdf.data !== null && (
             <>
               <Link
                 href={`${getStrapiMedia(article.attributes.pdf)}`}
@@ -72,8 +70,6 @@ const Article = ({ articles, article, categories }) => {
                 </Worker>
               </div>
             </>
-          ) : (
-            ""
           )}
         </div>
       </div>
