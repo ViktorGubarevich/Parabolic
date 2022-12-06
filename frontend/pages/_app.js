@@ -1,3 +1,4 @@
+import { SessionProvider } from "next-auth/react";
 import App from "next/app";
 import Head from "next/head";
 import { createContext } from "react";
@@ -18,9 +19,11 @@ function MyApp({ Component, pageProps }) {
           href={getStrapiMedia(global.attributes.favicon)}
         />
       </Head>
-      <GlobalContext.Provider value={global.attributes}>
-        <Component {...pageProps} />
-      </GlobalContext.Provider>
+      <SessionProvider session={pageProps.session}>
+        <GlobalContext.Provider value={global.attributes}>
+          <Component {...pageProps} />
+        </GlobalContext.Provider>
+      </SessionProvider>
     </>
   );
 }
